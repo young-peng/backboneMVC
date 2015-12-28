@@ -1,0 +1,10 @@
+<%_.each(data,function(item){%>
+<tr>
+    <td><%=item.purchase_date%></td>
+    <td><%=item.order_count%></td>
+</tr>
+<%})%>
+<tr style="font-weight: bold">
+    <td>合计</td>
+    <td><%=total%></td>
+</tr>

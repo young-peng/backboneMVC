@@ -1,0 +1,22 @@
+<%if(data&&data.length !== 0){%>
+<%_.each(data,function (item) {%>
+	<tr>
+		<td><%=new Date(item.order_date).Format("yyyy-MM-dd hh : mm : ss")%></td>
+		<td><%=item.site_order_id%></td>
+		<td><%if(item.merge_status){%>是<%}else{%>否<%}%></td>
+		<td><%=item.trade_from%></td>
+		<td><%=item.consignee%></td>
+		<td><%=json[item.delivery_province]%><%=json[item.delivery_city]%><%json[item.delivery_district]%><%=item.delivery_address%></td>
+		<td><%=item.mobile%></td>
+		<td class="break"><%=item.serial_number%></td>
+		<td><%=item.buyer_nick%></td>
+		<td>
+			<a href="http://192.168.6.5/scp/tickets.php?a=open&name=<%=item.consignee%>&phone=<%=item.mobile%>&sn=<%=item.serial_number%>&order_channel=<%=item.trade_from%>&order_id=<%=item.site_order_id%>&new_address=<%=json[item.delivery_province]%><%=json[item.delivery_city]%><%json[item.delivery_district]%><%=item.delivery_address%>" class="btn btn-primary" target="_blank">创建工单</a>
+		</td>
+	</tr>
+<%});%>
+<%} else {%>
+	<tr>
+		<td colspan="10" style="text-align: center">没有查询到订单信息</td>
+	</tr>
+<%}%>
